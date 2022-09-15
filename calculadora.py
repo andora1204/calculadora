@@ -8,7 +8,7 @@ raiz.resizable(False,False)
 
 miframe=Frame(raiz)
 miframe.pack()
-miframe.config(bg="purple")
+miframe.config(bg="blue")
 miframe.config(cursor="hand2")
 
 
