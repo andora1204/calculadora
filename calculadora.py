@@ -3,7 +3,7 @@ from tkinter import *
 raiz=Tk()
 raiz.title("Andora")
 #raiz.iconbitmap("logoico.ico")
-raiz.config(bg="purple")
+raiz.config(bg="blue")
 raiz.resizable(False,False)
 
 miframe=Frame(raiz)
