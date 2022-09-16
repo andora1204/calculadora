@@ -1,5 +1,25 @@
 from tkinter import *
 
+"""variables"""
+operations = ""
+
+reset_screen = False
+
+results = 0
+
+def number_presset(num):
+	global operations
+	global reset_screen
+
+
+	if reset_screen != False:
+		screen_number.set(num)
+		reset_screen = False
+
+	else:
+		screen_number.set(screen_number.get() + num)
+
+
 root=Tk()
 root.title("Andora")
 #root.iconbitmap("logoico.ico")
@@ -40,12 +60,12 @@ root_button.config(relief="groove")
 root_button.grid(row=2, column=4)
 
 #------------fila de botones numero 2------------------------------------------------------------------------------------
-button7=Button(my_frame, text="7", width=5, height=2)
+button7=Button(my_frame, text="7", width=5, height=2, command=lambda:number_presset("7"))
 button7.config(bd=10)
 button7.config(relief="groove")
 button7.grid(row=3, column=1)
 
-button8=Button(my_frame, text="8", width=5, height=2)
+button8=Button(my_frame, text="8", width=5, height=2, command=lambda:number_presset("8"))
 button8.config(bd=10)
 button8.config(relief="groove")
 button8.grid(row=3, column=2)
