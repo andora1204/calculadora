@@ -19,6 +19,8 @@ def number_presset(num):
 	else:
 		screen_number.set(screen_number.get() + num)
 
+#aqui va una funcion
+
 
 root=Tk()
 root.title("Andora")
