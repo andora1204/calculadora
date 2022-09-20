@@ -7,8 +7,6 @@ reset_screen = False
 
 results = 0
 
-variable = 0
-
 counter_add = 0
 
 def number_presset(num):
@@ -27,21 +25,17 @@ def addition(numb):
 	global counter_add
 	global operations
 	global results
-	global variable
 	global reset_screen
 
 	if counter_add == 0:
-		variable = float(numb)
-		results = variable
-	else:
-		if counter_add == 1:
-			results = variable + float(numb)
+		results = float(numb)
 
-		else:
-			results = float(results) + float(numb)
+	elif counter_add >= 1:
+		results = float(results) + float(numb)
+	
 
-		screen_number.set(float(results))
-		results = screen_number.get()
+	screen_number.set(float(results))
+	results = screen_number.get()
 
 	counter_add +=1
 	operations = "suma"
