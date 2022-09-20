@@ -81,6 +81,117 @@ def multiply(numb):
 	operations = "multiplica"
 	reset_screen = True
 
+def division(numb):
+	global counter_operation
+	global operations
+	global results
+	global reset_screen
+
+	if counter_operation == 0:
+		results = float(numb)
+
+	elif counter_operation >= 1:
+		results = float(results) / float(numb)
+	
+
+	screen_number.set(float(results))
+	results = screen_number.get()
+
+	counter_operation +=1
+	operations = "divide"
+	reset_screen = True
+
+def square_root(numb):
+	global operations
+	global results
+	global reset_screen
+
+	results = float(numb)
+	screen_number.set(results**0.5)
+	operations = "raiz_cuadrada"
+	reset_screen = True
+
+def power(numb):
+	global operations
+	global results
+	global reset_screen
+
+	results = float(numb)
+	screen_number.set(results**2)
+	operations = "potencia"
+	reset_screen = True
+
+	results = screen_number.get()
+
+def percentege():
+	global counter_operation
+	global operations
+	global results
+	global reset_screen
+
+
+	if operations == "multiplica":
+		screen_number.set(float(results) * float(screen_number.get()) / 100)
+	
+	counter_operation = 0
+	operations = "porcentaje"
+	reset_screen = True
+
+	results = screen_number.get()
+
+def CE_clear():
+	global counter_operation
+	global operations
+	global results
+	global reset_screen
+	results = 0
+	reset_screen = True
+	screen_number.set(0)
+	counter_operation = 0
+
+def equal():
+	global counter_operation
+	global operations
+	global results
+	global reset_screen
+
+	if operations == "suma":
+		screen_number.set(float(results) + float(screen_number.get()))
+		results = 0
+		counter_operation = 0
+
+	if operations == "resta":
+		screen_number.set(float(results) - float(screen_number.get()))
+		results = 0
+		counter_operation = 0
+
+	if operations == "multiplica":
+		screen_number.set(float(results) * float(screen_number.get()))
+		results = 0
+		counter_operation = 0
+
+	if operations == "divide":
+		screen_number.set(float(results) / float(screen_number.get()))
+		results = 0
+		counter_operation = 0
+
+	if operations == "raiz_cuadrada":
+		screen_number.get()
+		results = 0
+
+	if operations == "porcentaje":
+		screen_number.get()
+		results = 0
+
+	if operations == "potencia":
+		screen_number.get()
+		results = 0
+
+
+
+
+
+
 
 root=Tk()
 root.title("Andora")
@@ -101,22 +212,22 @@ screen_calculator.grid(row=1, column=1, padx=0, pady=20, columnspan=4)
 screen_calculator.config(background="white", fg="black", justify="right")
 
 #------------fila de botones numero 1------------------------------------------------------------------------------------
-CE_button=Button(my_frame, text="CE", width=5, height=2)
+CE_button=Button(my_frame, text="CE", width=5, height=2,command=lambda:CE_clear())
 CE_button.config(bd=10)
 CE_button.config(relief="groove")
 CE_button.grid(row=2, column=1)
 
-percentege_button=Button(my_frame, text="%", width=5, height=2)
+percentege_button=Button(my_frame, text="%", width=5, height=2, command=lambda:percentege())
 percentege_button.config(bd=10)
 percentege_button.config(relief="groove")
 percentege_button.grid(row=2, column=2)
 
-power_button=Button(my_frame, text="x²", width=5, height=2)
+power_button=Button(my_frame, text="x²", width=5, height=2, command=lambda:power(screen_number.get()))
 power_button.config(bd=10)
 power_button.config(relief="groove")
 power_button.grid(row=2, column=3)
  
-root_button=Button(my_frame, text="√", width=5, height=2)
+root_button=Button(my_frame, text="√", width=5, height=2, command=lambda:square_root(screen_number.get()))
 root_button.config(bd=10)
 root_button.config(relief="groove")
 root_button.grid(row=2, column=4)
@@ -137,7 +248,7 @@ button9.config(bd=10)
 button9.config(relief="groove")
 button9.grid(row=3, column=3)
  
-divisio_button=Button(my_frame, text="/", width=5, height=2)
+divisio_button=Button(my_frame, text="/", width=5, height=2, command=lambda:division(screen_number.get()))
 divisio_button.config(bd=10)
 divisio_button.config(relief="groove")
 divisio_button.grid(row=3, column=4)
@@ -194,7 +305,7 @@ button0.config(bd=10)
 button0.config(relief="groove")
 button0.grid(row=6, column=2)
 
-equal_button=Button(my_frame, text="=", width=5, height=2)
+equal_button=Button(my_frame, text="=", width=5, height=2, command=lambda:equal())
 equal_button.config(bd=10)
 equal_button.config(relief="groove")
 equal_button.grid(row=6, column=3)
