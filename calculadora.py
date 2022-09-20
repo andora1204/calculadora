@@ -61,6 +61,25 @@ def subtraction(numb):
 	operations = "resta"
 	reset_screen = True
 
+def multiply(numb):
+	global counter_operation
+	global operations
+	global results
+	global reset_screen
+
+	if counter_operation == 0:
+		results = float(numb)
+
+	elif counter_operation >= 1:
+		results = float(results) * float(numb)
+	
+
+	screen_number.set(float(results))
+	results = screen_number.get()
+
+	counter_operation +=1
+	operations = "multiplica"
+	reset_screen = True
 
 
 root=Tk()
@@ -139,7 +158,7 @@ button4.config(bd=10)
 button4.config(relief="groove")
 button4.grid(row=4, column=1)
  
-multiplication_button=Button(my_frame, text="x", width=5, height=2)
+multiplication_button=Button(my_frame, text="x", width=5, height=2, command=lambda:multiply(screen_number.get()))
 multiplication_button.config(bd=10)
 multiplication_button.config(relief="groove")
 multiplication_button.grid(row=4, column=4)
