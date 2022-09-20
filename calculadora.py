@@ -7,7 +7,7 @@ reset_screen = False
 
 results = 0
 
-counter_add = 0
+counter_operation = 0
 
 def number_presset(num):
 	global operations
@@ -22,23 +22,43 @@ def number_presset(num):
 		screen_number.set(screen_number.get() + num)
 
 def addition(numb):
-	global counter_add
+	global counter_operation
 	global operations
 	global results
 	global reset_screen
 
-	if counter_add == 0:
+	if counter_operation == 0:
 		results = float(numb)
 
-	elif counter_add >= 1:
+	elif counter_operation >= 1:
 		results = float(results) + float(numb)
 	
 
 	screen_number.set(float(results))
 	results = screen_number.get()
 
-	counter_add +=1
+	counter_operation +=1
 	operations = "suma"
+	reset_screen = True
+
+def subtraction(numb):
+	global counter_operation
+	global operations
+	global results
+	global reset_screen
+
+	if counter_operation == 0:
+		results = float(numb)
+
+	elif counter_operation >= 1:
+		results = float(results) - float(numb)
+	
+
+	screen_number.set(float(results))
+	results = screen_number.get()
+
+	counter_operation +=1
+	operations = "resta"
 	reset_screen = True
 
 
@@ -140,7 +160,7 @@ button1.config(bd=10)
 button1.config(relief="groove")
 button1.grid(row=5, column=1)
  
-subtraction_button=Button(my_frame, text="-", width=5, height=2)
+subtraction_button=Button(my_frame, text="-", width=5, height=2, command=lambda:subtraction(screen_number.get()))
 subtraction_button.config(bd=10)
 subtraction_button.config(relief="groove")
 subtraction_button.grid(row=5, column=4)
