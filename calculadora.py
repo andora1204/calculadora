@@ -7,6 +7,10 @@ reset_screen = False
 
 results = 0
 
+variable = 0
+
+counter_add = 0
+
 def number_presset(num):
 	global operations
 	global reset_screen
@@ -19,7 +23,30 @@ def number_presset(num):
 	else:
 		screen_number.set(screen_number.get() + num)
 
-#aqui va una funcion
+def addition(numb):
+	global counter_add
+	global operations
+	global results
+	global variable
+	global reset_screen
+
+	if counter_add == 0:
+		variable = float(numb)
+		results = variable
+	else:
+		if counter_add == 1:
+			results = variable + float(numb)
+
+		else:
+			results = float(results) + float(numb)
+
+		screen_number.set(float(results))
+		results = screen_number.get()
+
+	counter_add +=1
+	operations = "suma"
+	reset_screen = True
+
 
 
 root=Tk()
@@ -139,7 +166,7 @@ equal_button.config(bd=10)
 equal_button.config(relief="groove")
 equal_button.grid(row=6, column=3)
  
-addition_button=Button(my_frame, text="+", width=5, height=2)
+addition_button=Button(my_frame, text="+", width=5, height=2, command=lambda:addition(screen_number.get()))
 addition_button.config(bd=10)
 addition_button.config(relief="groove")
 addition_button.grid(row=6, column=4)
